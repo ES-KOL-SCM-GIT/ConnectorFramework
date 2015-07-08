@@ -80,9 +80,9 @@ public class RallyRestWSProvider {
     		QueryRequest  qRequest = new QueryRequest(communicationVO.getQueryReqType());
 			qRequest.setLimit(Integer.MAX_VALUE);
 			
-			if(communicationVO.getQyeryReqFetch() != null && !"".equals(communicationVO.getQyeryReqFetch())){
-				qRequest.setFetch(new Fetch(StringUtils.join(communicationVO.getQyeryReqFetch().split(",") , ",")));
-				logger.debug("Query Request Fetch  : " + StringUtils.join(communicationVO.getQyeryReqFetch().split(",") , ","));
+			if(communicationVO.getQueryReqFetch() != null && !"".equals(communicationVO.getQueryReqFetch())){
+				qRequest.setFetch(new Fetch(StringUtils.join(communicationVO.getQueryReqFetch().split(",") , ",")));
+				logger.debug("Query Request Fetch  : " + StringUtils.join(communicationVO.getQueryReqFetch().split(",") , ","));
 			}
 			
 			QueryResponse queryResponse = rallyRestApi.query(qRequest);
