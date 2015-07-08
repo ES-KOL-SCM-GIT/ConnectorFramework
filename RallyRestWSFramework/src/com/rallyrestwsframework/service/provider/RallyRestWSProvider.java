@@ -15,6 +15,11 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.jsondoc.core.annotation.Api;
+import org.jsondoc.core.annotation.ApiBodyObject;
+import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiResponseObject;
+import org.jsondoc.core.pojo.ApiVerb;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -33,6 +38,7 @@ import com.rallyrestwsframework.vo.CommunicationVO;
  *
  */
 @Path("/rallyrestws")
+@Api(name = "Rally Rest Web Service", description = "This is the interface of the Web service Provider", group = "RallyRestWS")
 public class RallyRestWSProvider {
 	
 	final static Logger logger = Logger.getLogger(RallyRestWSProvider.class);
@@ -44,11 +50,18 @@ public class RallyRestWSProvider {
 	 * @throws URISyntaxException 
 	 * @throws Exception 
 	 */
+	@ApiMethod(
+			path = "/rallyrestws/queryrally",
+			verb = ApiVerb.POST, 
+			description = "Query Rally to get data",
+			consumes = {MediaType.APPLICATION_JSON},
+			produces = {MediaType.APPLICATION_JSON}
+			)
 	@POST
     @Path("/queryrally")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String queryRally(CommunicationVO communicationVO) throws IOException, IllegalAccessException, URISyntaxException{
+    public @ApiResponseObject String queryRally(@ApiBodyObject CommunicationVO communicationVO) throws IOException, IllegalAccessException, URISyntaxException{
 		JsonElement responseJSONElmnt = null;
     	RallyRestApi rallyRestApi = null;
     	try {

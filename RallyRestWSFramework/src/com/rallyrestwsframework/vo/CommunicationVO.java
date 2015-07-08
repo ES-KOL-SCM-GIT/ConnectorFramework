@@ -7,6 +7,9 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.jsondoc.core.annotation.ApiObject;
+import org.jsondoc.core.annotation.ApiObjectField;
+
 import com.google.gson.JsonElement;
 
 /**
@@ -15,18 +18,19 @@ import com.google.gson.JsonElement;
  *
  */
 @XmlRootElement
+@ApiObject(description="This is a object which is used for the data communication", name = "CommunicationVO")
 public class CommunicationVO implements Serializable{
 	
 	
 	private static final long serialVersionUID = -7181370482506216021L;
 
-	/*This property is used to get the information of Query Request Type*/
+	@ApiObjectField(name = "queryReqType", description = "This property is used to get the information of Query Request Type", required = true)
 	private String queryReqType;
 	
-	/*This property is used to get the information of Query Request Fetch*/
+	@ApiObjectField(name = "qyeryReqFetch", description = "This property is used to get the information of Query Request Fetch")
 	private String qyeryReqFetch;
 	
-	/*This property is used to send the response */
+	@ApiObjectField(name = "response", description = "This property is used to send the response")
 	private JsonElement response;
 
 	/**
