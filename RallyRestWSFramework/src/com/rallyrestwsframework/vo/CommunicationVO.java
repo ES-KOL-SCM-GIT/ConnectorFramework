@@ -27,8 +27,8 @@ public class CommunicationVO implements Serializable{
 	@ApiObjectField(name = "queryReqType", description = "This property is used to get the information of Query Request Type", required = true)
 	private String queryReqType;
 	
-	@ApiObjectField(name = "qyeryReqFetch", description = "This property is used to get the information of Query Request Fetch")
-	private String qyeryReqFetch;
+	@ApiObjectField(name = "queryReqFetch", description = "This property is used to get the information of Query Request Fetch")
+	private String queryReqFetch;
 	
 	@ApiObjectField(name = "response", description = "This property is used to send the response")
 	private JsonElement response;
@@ -47,18 +47,19 @@ public class CommunicationVO implements Serializable{
 		this.queryReqType = queryReqType;
 	}
 
+	
 	/**
-	 * @return the qyeryReqFetch
+	 * @return the queryReqFetch
 	 */
-	public String getQyeryReqFetch() {
-		return qyeryReqFetch;
+	public String getQueryReqFetch() {
+		return queryReqFetch;
 	}
 
 	/**
-	 * @param qyeryReqFetch the qyeryReqFetch to set
+	 * @param queryReqFetch the queryReqFetch to set
 	 */
-	public void setQyeryReqFetch(String qyeryReqFetch) {
-		this.qyeryReqFetch = qyeryReqFetch;
+	public void setQueryReqFetch(String queryReqFetch) {
+		this.queryReqFetch = queryReqFetch;
 	}
 
 	/**
