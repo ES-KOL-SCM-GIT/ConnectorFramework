@@ -30,8 +30,27 @@ public class CommunicationVO implements Serializable{
 	@ApiObjectField(name = "queryReqFetch", description = "This property is used to get the information of Query Request Fetch")
 	private String queryReqFetch;
 	
+	@ApiObjectField(name = "queryReqLimit", description = "This property is used to set the limit of Query Request")
+	private int queryReqLimit;
+	
+	@ApiObjectField(name = "queryReqOrder", description = "This property is used to set the Order of Query Request")
+	private String queryReqOrder;
+	
+	@ApiObjectField(name = "queryReqPageSize", description = "This property is used to set the Page Size of Query Request")
+	private int queryReqPageSize;
+	
+	@ApiObjectField(name = "queryReqProjectRef", description = "This property is used to set the Project Reference of Query Request")
+	private String queryReqProjectRef;
+	
+	@ApiObjectField(name = "queryReqWorkspaceRef", description = "This property is used to set the Workspace Reference of Query Request")
+	private String queryReqWorkspaceRef;
+	
+	@ApiObjectField(name = "queryReqFilters", description = "This property is used to set the Filters of Query Request")
+	private Relation queryReqFilter;
+	
 	@ApiObjectField(name = "response", description = "This property is used to send the response")
 	private JsonElement response;
+	
 
 	/**
 	 * @return the queryReqType
@@ -60,6 +79,90 @@ public class CommunicationVO implements Serializable{
 	 */
 	public void setQueryReqFetch(String queryReqFetch) {
 		this.queryReqFetch = queryReqFetch;
+	}
+
+	/**
+	 * @return the queryReqLimit
+	 */
+	public int getQueryReqLimit() {
+		return queryReqLimit;
+	}
+
+	/**
+	 * @param queryReqLimit the queryReqLimit to set
+	 */
+	public void setQueryReqLimit(int queryReqLimit) {
+		this.queryReqLimit = queryReqLimit;
+	}
+
+	/**
+	 * @return the queryReqOrder
+	 */
+	public String getQueryReqOrder() {
+		return queryReqOrder;
+	}
+
+	/**
+	 * @param queryReqOrder the queryReqOrder to set
+	 */
+	public void setQueryReqOrder(String queryReqOrder) {
+		this.queryReqOrder = queryReqOrder;
+	}
+
+	/**
+	 * @return the queryReqPageSize
+	 */
+	public int getQueryReqPageSize() {
+		return queryReqPageSize;
+	}
+
+	/**
+	 * @param queryReqPageSize the queryReqPageSize to set
+	 */
+	public void setQueryReqPageSize(int queryReqPageSize) {
+		this.queryReqPageSize = queryReqPageSize;
+	}
+
+	/**
+	 * @return the queryReqProjectRef
+	 */
+	public String getQueryReqProjectRef() {
+		return queryReqProjectRef;
+	}
+
+	/**
+	 * @param queryReqProjectRef the queryReqProjectRef to set
+	 */
+	public void setQueryReqProjectRef(String queryReqProjectRef) {
+		this.queryReqProjectRef = queryReqProjectRef;
+	}
+
+	/**
+	 * @return the queryReqWorkspaceRef
+	 */
+	public String getQueryReqWorkspaceRef() {
+		return queryReqWorkspaceRef;
+	}
+
+	/**
+	 * @param queryReqWorkspaceRef the queryReqWorkspaceRef to set
+	 */
+	public void setQueryReqWorkspaceRef(String queryReqWorkspaceRef) {
+		this.queryReqWorkspaceRef = queryReqWorkspaceRef;
+	}
+
+	/**
+	 * @return the queryReqFilter
+	 */
+	public Relation getQueryReqFilter() {
+		return queryReqFilter;
+	}
+
+	/**
+	 * @param queryReqFilter the queryReqFilter to set
+	 */
+	public void setQueryReqFilter(Relation queryReqFilter) {
+		this.queryReqFilter = queryReqFilter;
 	}
 
 	/**
