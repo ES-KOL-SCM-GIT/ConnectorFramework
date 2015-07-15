@@ -45,10 +45,10 @@ public class CommunicationVO implements Serializable{
 	@ApiObjectField(name = "queryReqWorkspaceRef", description = "This property is used to set the Workspace Reference of Query Request")
 	private String queryReqWorkspaceRef;
 	
-	@ApiObjectField(name = "queryReqFilters", description = "This property is used to set the Filters of Query Request")
+	@ApiObjectField(name = "queryReqFilter", description = "This property is used to set the Filter of Query Request")
 	private Relation queryReqFilter;
 	
-	@ApiObjectField(name = "response", description = "This property is used to send the response")
+	//@ApiObjectField(name = "response", description = "This property is used to send the response", required = false)
 	private JsonElement response;
 	
 
