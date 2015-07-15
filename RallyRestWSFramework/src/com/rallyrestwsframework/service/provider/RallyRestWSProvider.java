@@ -212,6 +212,7 @@ public class RallyRestWSProvider {
 					}
 				}
 			}else{
+				//List<QueryFilter> filters = new ArrayList<QueryFilter>();
 				for(RallyQueryFilterVO filterVO : relation.getQueryFilters()){
 					if(filter == null){
 						filter = new QueryFilter(filterVO.getField(), filterVO.getOperator(), filterVO.getValue());
@@ -223,6 +224,11 @@ public class RallyRestWSProvider {
 						}
 					}
 				}
+				/*if(relation.isRelationType()){
+					filter = filter.and(filters.toArray(new QueryFilter[filters.size()]));
+				}else{
+					filter = filter.or(filters.toArray(new QueryFilter[filters.size()]));
+				}*/
 				return filter;
 			}
 			
@@ -251,9 +257,15 @@ public class RallyRestWSProvider {
 		r4.setOperator("!=");
 		r4.setValue("RST");
 		
+		RallyQueryFilterVO r5 = new RallyQueryFilterVO();
+		r5.setField("MNP");
+		r5.setOperator("!=");
+		r5.setValue("RST");
+		
 		Relation R1 = new Relation();
 		R1.getQueryFilters().add(r1);
 		R1.getQueryFilters().add(r2);
+		R1.getQueryFilters().add(r5);
 		R1.setRelationType(true);
 		
 		
