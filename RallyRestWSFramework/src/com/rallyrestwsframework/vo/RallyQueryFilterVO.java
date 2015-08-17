@@ -15,7 +15,7 @@ import org.jsondoc.core.annotation.ApiObjectField;
  *
  */
 @XmlRootElement
-@ApiObject(description="This is a object which is used for Query Filtering", name = "RallyQueryFilterVO")
+@ApiObject(description="This is a object which is used for Query Filtering.", name = "RallyQueryFilterVO")
 public class RallyQueryFilterVO implements Serializable{
 
 	/**

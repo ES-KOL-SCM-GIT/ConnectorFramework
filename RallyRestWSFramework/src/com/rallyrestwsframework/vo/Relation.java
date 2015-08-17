@@ -17,7 +17,13 @@ import org.jsondoc.core.annotation.ApiObjectField;
  *
  */
 @XmlRootElement
-@ApiObject(description="This is a object which is used to create Relation between filters", name = "Relation")
+@ApiObject(description="<p>This is a object which is used to create Relation between filters.</p>"
+		+ "<br/><p>Example:</p>"
+		+ "<p>If required a filter like </p> "
+		+ "<p>((State = Fixed) AND (Priority = &quot;Resolve Immediately&quot;))</p>"
+		+ "<p> then need to construct a JSON object like </p>"
+		+ "<p> {&quot;queryFilters&quot;:[{&quot;field&quot;:&quot;State&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;value&quot;:&quot;Fixed&quot;},{&quot;field&quot;:&quot;Priority&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;value&quot;:&quot;Resolve Immediately&quot;}],&quot;relationType&quot;:true,&quot;relations&quot;:[]}</p>",
+		name = "Relation")
 public class Relation implements Serializable{
 
 	/**

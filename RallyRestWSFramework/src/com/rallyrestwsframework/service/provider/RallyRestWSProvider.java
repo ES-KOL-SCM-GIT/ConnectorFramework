@@ -6,6 +6,7 @@ package com.rallyrestwsframework.service.provider;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -14,6 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.NameValuePair;
 import org.apache.log4j.Logger;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiBodyObject;
@@ -176,6 +178,20 @@ public class RallyRestWSProvider {
 			logger.info("Request Filter is set to : " + filter);
 		}
 		
+		final List<NameValuePair> params = communicationVO.getQueryReqParams();
+		if(params != null && !params.isEmpty()){
+			qRequest.setParams(params);
+		}
+		
+		final boolean scopeDown = communicationVO.isQueryReqScopedDown();
+		if(!scopeDown){
+			qRequest.setScopedDown(scopeDown);
+		}
+		
+		final boolean scopeUp = communicationVO.isQueryReqScopedUp();
+		if(scopeUp){
+			qRequest.setScopedUp(scopeUp);
+		}
 	};
 	
 

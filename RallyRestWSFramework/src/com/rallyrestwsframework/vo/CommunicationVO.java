@@ -4,9 +4,11 @@
 package com.rallyrestwsframework.vo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.apache.http.NameValuePair;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
@@ -27,7 +29,7 @@ public class CommunicationVO implements Serializable{
 	@ApiObjectField(name = "queryReqType", description = "This property is used to get the information of Query Request Type", required = true)
 	private String queryReqType;
 	
-	@ApiObjectField(name = "queryReqFetch", description = "This property is used to get the information of Query Request Fetch")
+	@ApiObjectField(name = "queryReqFetch", description = "This property is used to get the information of Query Request Fetch. Fields should be comma separated.")
 	private String queryReqFetch;
 	
 	@ApiObjectField(name = "queryReqLimit", description = "This property is used to set the limit of Query Request")
@@ -44,6 +46,17 @@ public class CommunicationVO implements Serializable{
 	
 	@ApiObjectField(name = "queryReqWorkspaceRef", description = "This property is used to set the Workspace Reference of Query Request")
 	private String queryReqWorkspaceRef;
+	
+	@ApiObjectField(name = "queryReqParams", description = "This property is used to set the list of additional parameters included in this request")
+	private List<NameValuePair> queryReqParams;
+	
+	@ApiObjectField(name = "queryReqScopedDown", description = "<p>If a project has been specified, set whether to include matching objects in child projects in the result set.</p> "
+			+ "<p> Defaults to true.</p>")
+	private boolean queryReqScopedDown = true;
+		
+    @ApiObjectField(name = "queryReqScopedUp", description = "<p>If a project has been specified, set whether to include matching objects in parent projects in the result set.</p> "
+    		+ "<p>Defaults to false. <p/>")
+	private boolean queryReqScopedUp = false;
 	
 	@ApiObjectField(name = "queryReqFilter", description = "This property is used to set the Filter of Query Request")
 	private Relation queryReqFilter;
@@ -149,6 +162,48 @@ public class CommunicationVO implements Serializable{
 	 */
 	public void setQueryReqWorkspaceRef(String queryReqWorkspaceRef) {
 		this.queryReqWorkspaceRef = queryReqWorkspaceRef;
+	}
+
+	/**
+	 * @return the queryReqParams
+	 */
+	public List<NameValuePair> getQueryReqParams() {
+		return queryReqParams;
+	}
+
+	/**
+	 * @param queryReqParams the queryReqParams to set
+	 */
+	public void setQueryReqParams(List<NameValuePair> queryReqParams) {
+		this.queryReqParams = queryReqParams;
+	}
+	
+	/**
+	 * @return the queryReqScopedDown
+	 */
+	public boolean isQueryReqScopedDown() {
+		return queryReqScopedDown;
+	}
+
+	/**
+	 * @param queryReqScopedDown the queryReqScopedDown to set
+	 */
+	public void setQueryReqScopedDown(boolean queryReqScopedDown) {
+		this.queryReqScopedDown = queryReqScopedDown;
+	}
+	
+	/**
+	 * @return the queryReqScopedUp
+	 */
+	public boolean isQueryReqScopedUp() {
+		return queryReqScopedUp;
+	}
+
+	/**
+	 * @param queryReqScopedUp the queryReqScopedUp to set
+	 */
+	public void setQueryReqScopedUp(boolean queryReqScopedUp) {
+		this.queryReqScopedUp = queryReqScopedUp;
 	}
 
 	/**
