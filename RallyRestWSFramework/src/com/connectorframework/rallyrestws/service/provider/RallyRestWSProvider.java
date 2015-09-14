@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rallyrestwsframework.service.provider;
+package com.connectorframework.rallyrestws.service.provider;
 
 import java.io.IOException;
 import java.net.URI;
@@ -23,6 +23,10 @@ import org.jsondoc.core.annotation.ApiMethod;
 import org.jsondoc.core.annotation.ApiResponseObject;
 import org.jsondoc.core.pojo.ApiVerb;
 
+import com.connectorframework.rallyrestws.propertyreader.PropertyReader;
+import com.connectorframework.rallyrestws.vo.RallyQueryFilterVO;
+import com.connectorframework.rallyrestws.vo.Relation;
+import com.connectorframework.vo.CommunicationVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.rallydev.rest.RallyRestApi;
@@ -30,10 +34,6 @@ import com.rallydev.rest.request.QueryRequest;
 import com.rallydev.rest.response.QueryResponse;
 import com.rallydev.rest.util.Fetch;
 import com.rallydev.rest.util.QueryFilter;
-import com.rallyrestwsframework.propertyreader.PropertyReader;
-import com.rallyrestwsframework.vo.CommunicationVO;
-import com.rallyrestwsframework.vo.RallyQueryFilterVO;
-import com.rallyrestwsframework.vo.Relation;
 
 
 

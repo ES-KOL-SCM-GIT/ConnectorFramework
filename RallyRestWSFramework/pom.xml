@@ -1,14 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>RallyRestWSFramework</groupId>
-	<artifactId>RallyRestWSFramework</artifactId>
+	<groupId>ConnectorFramework</groupId>
+	<artifactId>ConnectorFramework</artifactId>
 	<version>1.0</version>
 	<packaging>war</packaging>
-	<name>Rally Rest Web Service Framework</name>
+	<name>Connector Framework</name>
 	<description>This is a generic framework project to access Rally using Rest Web Service</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<jsondoc.path>http://localhost:8080/api/jsondoc</jsondoc.path>
 	</properties>
 
@@ -45,9 +46,9 @@
 						</goals>
 						<configuration>
 							<version>1.1</version>
-							<basePath>/RallyRestWSFramework/service</basePath>
+							<basePath>/ConnectorFramework/service</basePath>
 							<packages>
-								<package>com.rallyrestwsframework</package>
+								<package>com.connectorframework</package>
 							</packages>
 							<outputFile>${project.build.directory}/jsondoc-ui/jsondoc.json</outputFile>
 							<scanner>org.jsondoc.core.scanner.DefaultJSONDocScanner</scanner>

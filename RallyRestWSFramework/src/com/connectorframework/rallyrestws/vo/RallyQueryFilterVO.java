@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rallyrestwsframework.vo;
+package com.connectorframework.rallyrestws.vo;
 
 import java.io.Serializable;
 

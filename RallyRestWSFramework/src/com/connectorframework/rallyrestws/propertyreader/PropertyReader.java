@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rallyrestwsframework.propertyreader;
+package com.connectorframework.rallyrestws.propertyreader;
 
 import java.io.IOException;
 import java.io.InputStream;

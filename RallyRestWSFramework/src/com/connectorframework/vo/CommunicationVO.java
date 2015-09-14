@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.rallyrestwsframework.vo;
+package com.connectorframework.vo;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,6 +12,7 @@ import org.apache.http.NameValuePair;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
+import com.connectorframework.rallyrestws.vo.Relation;
 import com.google.gson.JsonElement;
 
 /**
