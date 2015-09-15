@@ -47,22 +47,22 @@ public class ESKolkataMySQLProvider {
 	@POST
 	@Path("/getMembersbyTeamName")
 	public @ApiResponseObject ESKolMySQLCommunicationVO getMembersbyTeamName(@ApiBodyObject ESKolMySQLCommunicationVO comVO) throws GeneralSecurityException, URISyntaxException {
-		logger.info("Starting to get the members by team name...");
+		logger.info("Starting to get the members by team name : " + comVO.getTeamName());
 		ESKolMySQLCommunicationVO eSKolMySQLCommunicationVO = new ESKolMySQLCommunicationVO();
 		List<User> users = new ArrayList<User>();
 		
 		try {
 			eSKolMySQLCommunicationVO.setTeamName(comVO.getTeamName());
 			users = esKolkataMySQLService.getMembersbyTeamName(comVO.getTeamName());
-			eSKolMySQLCommunicationVO.setUsers(users);
-			
+			eSKolMySQLCommunicationVO.setUsers(users);	
+			logger.debug("Successflly got user list for the team : " + comVO.getTeamName());
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			logger.error("Error to get the members by team name : " + comVO.getTeamName() + "\n Exception is : ", e);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.error("Error to get the members by team name : " + comVO.getTeamName() + "\n Exception is : ", e);
 		} 
 		
-		logger.info("Ended to get the members by team name...");
+		logger.info("Ended to get the members by team name : " + comVO.getTeamName());
 		return eSKolMySQLCommunicationVO;
 	}
 

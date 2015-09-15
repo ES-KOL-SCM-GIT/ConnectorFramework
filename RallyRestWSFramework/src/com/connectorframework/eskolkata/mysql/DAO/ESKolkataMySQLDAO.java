@@ -8,9 +8,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 
 import com.connectorframework.eskolkata.mysql.vo.Role;
 import com.connectorframework.eskolkata.mysql.vo.User;
@@ -21,6 +22,9 @@ import com.connectorframework.propertyreader.PropertyReader;
  *
  */
 public class ESKolkataMySQLDAO {
+	
+	final static Logger logger = Logger.getLogger(ESKolkataMySQLDAO.class);
+	
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = PropertyReader.properties.getProperty("es.kolkata.mysql.url");
@@ -62,6 +66,8 @@ public class ESKolkataMySQLDAO {
 				user.setRoles(getRolesbyEmpId(rs.getString("empId")));
 				
 				users.add(user);
+				
+				logger.debug("User for the team : " + teamName + " User : " + user);
 			}
 		} finally {
 			close(rs, stmt, connection);
