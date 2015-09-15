@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.connectorframework.vo;
+package com.connectorframework.rallyrestws.vo;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,7 +12,6 @@ import org.apache.http.NameValuePair;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
-import com.connectorframework.rallyrestws.vo.Relation;
 import com.google.gson.JsonElement;
 
 /**
@@ -21,7 +20,7 @@ import com.google.gson.JsonElement;
  *
  */
 @XmlRootElement
-@ApiObject(description="This is a object which is used for the data communication", name = "CommunicationVO")
+@ApiObject(description="This is a object which is used for the data communication", name = "CommunicationVO", group = "Rally Rest WS")
 public class CommunicationVO implements Serializable{
 	
 	

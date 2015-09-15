@@ -23,7 +23,8 @@ import org.jsondoc.core.annotation.ApiObjectField;
 		+ "<p>((State = Fixed) AND (Priority = &quot;Resolve Immediately&quot;))</p>"
 		+ "<p> then need to construct a JSON object like </p>"
 		+ "<p> {&quot;queryFilters&quot;:[{&quot;field&quot;:&quot;State&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;value&quot;:&quot;Fixed&quot;},{&quot;field&quot;:&quot;Priority&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;value&quot;:&quot;Resolve Immediately&quot;}],&quot;relationType&quot;:true,&quot;relations&quot;:[]}</p>",
-		name = "Relation")
+		name = "Relation",
+		group = "Rally Rest WS")
 public class Relation implements Serializable{
 
 	/**

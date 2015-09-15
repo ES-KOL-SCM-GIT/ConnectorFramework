@@ -23,10 +23,10 @@ import org.jsondoc.core.annotation.ApiMethod;
 import org.jsondoc.core.annotation.ApiResponseObject;
 import org.jsondoc.core.pojo.ApiVerb;
 
-import com.connectorframework.rallyrestws.propertyreader.PropertyReader;
+import com.connectorframework.propertyreader.PropertyReader;
+import com.connectorframework.rallyrestws.vo.CommunicationVO;
 import com.connectorframework.rallyrestws.vo.RallyQueryFilterVO;
 import com.connectorframework.rallyrestws.vo.Relation;
-import com.connectorframework.vo.CommunicationVO;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.rallydev.rest.RallyRestApi;
@@ -43,7 +43,7 @@ import com.rallydev.rest.util.QueryFilter;
  *
  */
 @Path("/rallyrestws")
-@Api(name = "Rally Rest Web Service", description = "This is the interface of the Web service Provider", group = "RallyRestWS")
+@Api(name = "Rally Rest Web Service", description = "This is the interface of the Web service Provider", group = "Rally Rest WS")
 public class RallyRestWSProvider {
 	
 	final static Logger logger = Logger.getLogger(RallyRestWSProvider.class);
