@@ -51,7 +51,7 @@ public class DiscrepancyReport implements Serializable{
 	private String artifactRef;
 	
 	@ApiObjectField(name = "teamName", description = "Team Name of Discrepancy Report ", required = false)
-	private String teamName = "";
+	private String teamName;
 	
 	@ApiObjectField(name = "artifatOwner", description = "Artifat Owner of Discrepancy Report ", required = false)
 	private String artifatOwner;
@@ -60,7 +60,7 @@ public class DiscrepancyReport implements Serializable{
 	private String productOwner;
 	
 	@ApiObjectField(name = "date", description = "Date of Discrepancy Report ", required = false)
-	private Date date = new DateTime().toDate();
+	private Date date;
 	
 
 	public DiscrepancyReport() {
@@ -128,7 +128,7 @@ public class DiscrepancyReport implements Serializable{
 		return productOwner;
 	}
 
-	@Column(name = "created_date", nullable = false, updatable = false)
+	@Column(name = "created_date", nullable = true, updatable = false)
 	public Date getDate() {
 		return date;
 	}
