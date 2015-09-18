@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.connectorframework.eskolkata.mysql.DAO;
+package com.connectorframework.eskolkata.mysql.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

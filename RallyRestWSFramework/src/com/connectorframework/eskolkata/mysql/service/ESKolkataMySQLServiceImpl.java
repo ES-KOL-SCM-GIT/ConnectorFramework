@@ -6,7 +6,7 @@ package com.connectorframework.eskolkata.mysql.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.connectorframework.eskolkata.mysql.DAO.ESKolkataMySQLDAO;
+import com.connectorframework.eskolkata.mysql.dao.ESKolkataMySQLDAO;
 import com.connectorframework.eskolkata.mysql.vo.User;
 
 /**
