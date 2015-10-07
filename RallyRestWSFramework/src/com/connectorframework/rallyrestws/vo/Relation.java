@@ -22,7 +22,13 @@ import org.jsondoc.core.annotation.ApiObjectField;
 		+ "<p>If required a filter like </p> "
 		+ "<p>((State = Fixed) AND (Priority = &quot;Resolve Immediately&quot;))</p>"
 		+ "<p> then need to construct a JSON object like </p>"
-		+ "<p> {&quot;queryFilters&quot;:[{&quot;field&quot;:&quot;State&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;value&quot;:&quot;Fixed&quot;},{&quot;field&quot;:&quot;Priority&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;value&quot;:&quot;Resolve Immediately&quot;}],&quot;relationType&quot;:true,&quot;relations&quot;:[]}</p>",
+		+ "<p> {&quot;queryFilters&quot;:[{&quot;field&quot;:&quot;State&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;value&quot;:&quot;Fixed&quot;},{&quot;field&quot;:&quot;Priority&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;value&quot;:&quot;Resolve Immediately&quot;}],&quot;relationType&quot;:true,&quot;relations&quot;:[]}</p>"
+		+ "<p>---------------------------------------------------------</p>"
+		+ "<p>If you required a filter like</p>"
+		+ "<p>((State = Fixed) AND (Priority = &quot;Resolve Immediately&quot;)) OR ((XYZ <> ABC) OR (MNP != RST)))</p>"
+		+ "<p>then need to construct a JSON object like </p>" 
+		+ "<p>{&quot;queryFilters&quot;:[],&quot;relationType&quot;:false,&quot;relations&quot;:[{&quot;queryFilters&quot;:[{&quot;field&quot;:&quot;State&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;value&quot;:&quot;Fixed&quot;},{&quot;field&quot;:&quot;Priority&quot;,&quot;operator&quot;:&quot;=&quot;,&quot;value&quot;:&quot;ResolveImmediately&quot;}],&quot;relationType&quot;:true,&quot;relations&quot;:[]},{&quot;queryFilters&quot;:[{&quot;field&quot;:&quot;XYZ&quot;,&quot;operator&quot;:&quot;<>&quot;,&quot;value&quot;:&quot;ABC&quot;},{&quot;field&quot;:&quot;MNP&quot;,&quot;operator&quot;:&quot;!=&quot;,&quot;value&quot;:&quot;RST&quot;}],&quot;relationType&quot;:false,&quot;relations&quot;:[]}]}</p>"
+		+ "<p>---------------------------------------------------------</p>",
 		name = "Relation",
 		group = "Rally Rest WS")
 public class Relation implements Serializable{
