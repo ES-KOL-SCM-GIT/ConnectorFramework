@@ -17,7 +17,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.joda.time.DateTime;
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
 
@@ -53,8 +52,8 @@ public class DiscrepancyReport implements Serializable{
 	@ApiObjectField(name = "teamName", description = "Team Name of Discrepancy Report ", required = false)
 	private String teamName;
 	
-	@ApiObjectField(name = "artifatOwner", description = "Artifat Owner of Discrepancy Report ", required = false)
-	private String artifatOwner;
+	@ApiObjectField(name = "artifactOwner", description = "Artifact Owner of Discrepancy Report ", required = false)
+	private String artifactOwner;
 	
 	@ApiObjectField(name = "productOwner", description = "Product Owner of Discrepancy Report ", required = false)
 	private String productOwner;
@@ -69,14 +68,14 @@ public class DiscrepancyReport implements Serializable{
 
 
 	public DiscrepancyReport(DiscrepancyType discType, String formattedID, String artifactName,
-			String artifactRef, String teamName, String artifatOwner, String productOwner, Date date) {
+			String artifactRef, String teamName, String artifactOwner, String productOwner, Date date) {
 		super();
 		this.discType = discType;
 		this.formattedID = formattedID;
 		this.artifactName = artifactName;
 		this.artifactRef = artifactRef;
 		this.teamName = teamName;
-		this.artifatOwner = artifatOwner;
+		this.artifactOwner = artifactOwner;
 		this.productOwner = productOwner;
 		this.date = date;
 	}
@@ -118,9 +117,9 @@ public class DiscrepancyReport implements Serializable{
 		return teamName;
 	}
 
-	@Column(name = "artifat_owner", nullable = true)
-	public String getArtifatOwner() {
-		return artifatOwner;
+	@Column(name = "artifact_owner", nullable = true)
+	public String getArtifactOwner() {
+		return artifactOwner;
 	}
 
 	@Column(name = "product_owner", nullable = true)
@@ -157,9 +156,8 @@ public class DiscrepancyReport implements Serializable{
 		this.teamName = teamName;
 	}
 
-
-	public void setArtifatOwner(String artifatOwner) {
-		this.artifatOwner = artifatOwner;
+	public void setArtifactOwner(String artifactOwner) {
+		this.artifactOwner = artifactOwner;
 	}
 
 
@@ -177,7 +175,7 @@ public class DiscrepancyReport implements Serializable{
 	public String toString() {
 		return "DiscrepancrReport [id=" + id + ", discType=" + discType + ", formattedID=" + formattedID
 				+ ", artifactName=" + artifactName + ", artifactRef=" + artifactRef + ", teamName=" + teamName
-				+ ", artifatOwner=" + artifatOwner + ", productOwner=" + productOwner + ", date=" + date + "]";
+				+ ", artifactOwner=" + artifactOwner + ", productOwner=" + productOwner + ", date=" + date + "]";
 	}
 
 	@Override
@@ -186,7 +184,7 @@ public class DiscrepancyReport implements Serializable{
 		int result = 1;
 		result = prime * result + ((artifactName == null) ? 0 : artifactName.hashCode());
 		result = prime * result + ((artifactRef == null) ? 0 : artifactRef.hashCode());
-		result = prime * result + ((artifatOwner == null) ? 0 : artifatOwner.hashCode());
+		result = prime * result + ((artifactOwner == null) ? 0 : artifactOwner.hashCode());
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + ((discType == null) ? 0 : discType.hashCode());
 		result = prime * result + ((formattedID == null) ? 0 : formattedID.hashCode());
@@ -215,10 +213,10 @@ public class DiscrepancyReport implements Serializable{
 				return false;
 		} else if (!artifactRef.equals(other.artifactRef))
 			return false;
-		if (artifatOwner == null) {
-			if (other.artifatOwner != null)
+		if (artifactOwner == null) {
+			if (other.artifactOwner != null)
 				return false;
-		} else if (!artifatOwner.equals(other.artifatOwner))
+		} else if (!artifactOwner.equals(other.artifactOwner))
 			return false;
 		if (date == null) {
 			if (other.date != null)

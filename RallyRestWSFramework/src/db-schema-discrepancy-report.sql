@@ -19,7 +19,7 @@ CREATE TABLE `discrepancy_report` (
 	`artifact_name` VARCHAR(100) NOT NULL DEFAULT '',
 	`artifact_ref` VARCHAR(100) NOT NULL DEFAULT '',
 	`team_name` VARCHAR(100) NULL DEFAULT '',
-	`artifat_owner` VARCHAR(100) NULL DEFAULT '',
+	`artifact_owner` VARCHAR(100) NULL DEFAULT '',
 	`product_owner` VARCHAR(100) NULL DEFAULT '',
 	`created_date` DATE NULL DEFAULT NULL,
 	PRIMARY KEY (`id`),
@@ -28,7 +28,7 @@ CREATE TABLE `discrepancy_report` (
 )
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
-AUTO_INCREMENT=123
+AUTO_INCREMENT=1
 ;
 
 
