@@ -34,10 +34,10 @@ public class DiscrepancyReport implements Serializable{
 	private static final long serialVersionUID = 5836693266585344496L;
 
 	
-	@ApiObjectField(name = "id", description = "ID of Discrepancy Report ", required = false)
+	@ApiObjectField(name = "id", description = "ID of Discrepancy Report. This is an auto generated value.", required = false)
 	private Long id;
 
-	@ApiObjectField(name = "discType", description = "Type of Discrepancy Report ", required = false)
+	@ApiObjectField(name = "discType", description = "Discrepancy Type reference. Populate only id to refer the Discrepancy Type.", required = false)
 	private DiscrepancyType discType;
 
 	@ApiObjectField(name = "formattedID", description = "Formatted ID of Discrepancy Report ", required = false)
@@ -58,7 +58,7 @@ public class DiscrepancyReport implements Serializable{
 	@ApiObjectField(name = "productOwner", description = "Product Owner of Discrepancy Report ", required = false)
 	private String productOwner;
 	
-	@ApiObjectField(name = "date", description = "Date of Discrepancy Report ", required = false)
+	@ApiObjectField(name = "date", description = "Crated Date of Discrepancy Report. If this value is null then current date will be populated in this field.", required = false)
 	private Date date;
 	
 
