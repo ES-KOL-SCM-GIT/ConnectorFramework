@@ -316,12 +316,14 @@ public class DiscrepancyProvider {
     @Path("/saveListOfDiscrepancyReports")
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-    public void saveListOfDiscrepancyReports(@ApiBodyObject List<DiscrepancyReport> discrepancyReports){
+    public @ApiResponseObject String saveListOfDiscrepancyReports(@ApiBodyObject List<DiscrepancyReport> discrepancyReports){
 		logger.info("Starting saving Discrepancy Report : " + discrepancyReports);
 		
 		discrepancyService.saveDiscrepancyReports(discrepancyReports);;
 		
 		logger.info("End saving Discrepancy Report : " + discrepancyReports);
+		
+		return "Total number of discrepancy report saved : " + discrepancyReports.size();
 	}
 
 	@ApiMethod(
