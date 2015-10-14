@@ -349,22 +349,37 @@ public class DiscrepancyDAO {
 		Validate.notNull(discrepancyReports);
 		Validate.notEmpty(discrepancyReports);
 		
+		saveAllDiscrepancyReports(discrepancyReports);
+	}
+
+	/**
+	 * Save the list of Discrepancy Report in a batch
+	 * @param discrepancyReports
+	 */
+	private void saveAllDiscrepancyReports(List<DiscrepancyReport> discrepancyReports) {
 		Session session = null;
 		Transaction tx = null;
 		
-		try{
+		try {
 			session = HibernateUtil.getSessionFactory().openSession();
-
 			tx = session.beginTransaction();
 
-			session.save(discrepancyReports);
-
+			int count = 0;
+			for (DiscrepancyReport discrepancyReport : discrepancyReports) {
+				count++;
+				session.save(discrepancyReport);
+				if (count % 50 == 0) { // 50, same as the JDBC batch size
+					// flush a batch of inserts and release memory:
+					session.flush();
+					session.clear();
+				}
+			}
 			tx.commit();
 
 		} catch (RuntimeException e) {
-			LOGGER.error("Exception ocured to execute method with discrepancyReports : " + discrepancyReports , e);
+			LOGGER.error("Exception ocured to execute method.", e);
 			tx.rollback();
-		}finally {
+		} finally {
 			if (session != null) {
 				session.close();
 			}
