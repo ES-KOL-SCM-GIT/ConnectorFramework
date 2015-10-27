@@ -224,7 +224,7 @@ public class DiscrepancyProvider {
 	@ApiMethod(
 			path = "/discrepancy/getDiscrepancyReportbyDate",
 			verb = ApiVerb.GET, 
-			description = "Get Discrepancy Report based on provided date",
+			description = "Get Discrepancy Report based on provided date. Default shorting order is team, discrepancy type and product owner.",
 			produces = {MediaType.APPLICATION_JSON}
 			)
 	@GET

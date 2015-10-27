@@ -279,8 +279,8 @@ public class DiscrepancyDAO {
 
 			Criteria criteria = session.createCriteria(DiscrepancyReport.class).add(Restrictions.eq("date", date))
 								.addOrder(Order.asc("teamName"))
-								.addOrder(Order.asc("productOwner"))
-								.addOrder(Order.asc("discType"));
+								.addOrder(Order.asc("discType"))
+								.addOrder(Order.asc("productOwner"));
 			
 			if (LOGGER.isDebugEnabled()) {
 				LOGGER.debug("Found DiscrepancyReport with date : " + date + " and size of the DiscrepancyType list : "
