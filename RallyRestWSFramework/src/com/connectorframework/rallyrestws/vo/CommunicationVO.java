@@ -5,6 +5,7 @@ package com.connectorframework.rallyrestws.vo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -60,6 +61,15 @@ public class CommunicationVO implements Serializable{
 	
 	@ApiObjectField(name = "queryReqFilter", description = "This property is used to set the Filter of Query Request")
 	private Relation queryReqFilter;
+	
+	@ApiObjectField(name = "createObjType", description = "This property is used to set the type of object, which needs to be created in Rally.")
+	private String createObjType;
+	
+	@ApiObjectField(name = "createOrUpdateObjPropMap", description = "This property is used to set the map of properties of object, which needs to be created in Rally.")
+	private Map<String, String> createOrUpdateObjPropMap;
+	
+	@ApiObjectField(name = "updateObjRef", description = "This property is used to set the _ref of object, which needs to be update in Rally.")
+	private String updateObjRef;
 	
 	//@ApiObjectField(name = "response", description = "This property is used to send the response", required = false)
 	private JsonElement response;
@@ -218,6 +228,49 @@ public class CommunicationVO implements Serializable{
 	 */
 	public void setQueryReqFilter(Relation queryReqFilter) {
 		this.queryReqFilter = queryReqFilter;
+	}
+
+	
+	/**
+	 * @return the createObjType
+	 */
+	public String getCreateObjType() {
+		return createObjType;
+	}
+
+	/**
+	 * @param createObjType the createObjType to set
+	 */
+	public void setCreateObjType(String createObjType) {
+		this.createObjType = createObjType;
+	}
+
+	/**
+	 * @return the createObjPropMap
+	 */
+	public Map<String, String> getCreateOrUpdateObjPropMap() {
+		return createOrUpdateObjPropMap;
+	}
+
+	/**
+	 * @param createObjPropMap the createObjPropMap to set
+	 */
+	public void setCreateOrUpdateObjPropMap(Map<String, String> createObjPropMap) {
+		this.createOrUpdateObjPropMap = createObjPropMap;
+	}
+
+	/**
+	 * @return the updateObjRef
+	 */
+	public String getUpdateObjRef() {
+		return updateObjRef;
+	}
+
+	/**
+	 * @param updateObjRef the updateObjRef to set
+	 */
+	public void setUpdateObjRef(String updateObjRef) {
+		this.updateObjRef = updateObjRef;
 	}
 
 	/**

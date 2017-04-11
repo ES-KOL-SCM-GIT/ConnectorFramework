@@ -6,7 +6,9 @@ package com.connectorframework.rallyrestws.service.provider;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -29,9 +31,14 @@ import com.connectorframework.rallyrestws.vo.RallyQueryFilterVO;
 import com.connectorframework.rallyrestws.vo.Relation;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.rallydev.rest.RallyRestApi;
+import com.rallydev.rest.request.CreateRequest;
 import com.rallydev.rest.request.QueryRequest;
+import com.rallydev.rest.request.UpdateRequest;
+import com.rallydev.rest.response.CreateResponse;
 import com.rallydev.rest.response.QueryResponse;
+import com.rallydev.rest.response.UpdateResponse;
 import com.rallydev.rest.util.Fetch;
 import com.rallydev.rest.util.QueryFilter;
 
@@ -126,6 +133,135 @@ public class RallyRestWSProvider {
     	logger.debug("Sending Data: " + response);
 		return response;
 	}
+	
+	/**
+	 * Create object in Rally
+	 * @return
+	 * @throws IllegalAccessException 
+	 * @throws URISyntaxException 
+	 * @throws IOException 
+	 * @throws Exception 
+	 */
+	@ApiMethod(
+			path = "/rallyrestws/createObj",
+			verb = ApiVerb.POST, 
+			description = "Create object in Rally",
+			consumes = {MediaType.APPLICATION_JSON},
+			produces = {MediaType.APPLICATION_JSON}
+			)
+	@POST
+    @Path("/createObj")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public @ApiResponseObject String createObj(@ApiBodyObject CommunicationVO communicationVO) throws URISyntaxException, IllegalAccessException, IOException {
+    	RallyRestApi rallyRestApi = null;
+    	try {
+    		logger.info("Starting Object Creation...");
+    		
+    		final String rallyUrl = PropertyReader.properties.getProperty("rally.url");
+    		logger.debug("Rally URL: " + rallyUrl);
+    		
+    		final String apiKey = PropertyReader.properties.getProperty("api.key");
+    		rallyRestApi = new RallyRestApi(new URI(rallyUrl), apiKey);
+    		
+    		if(communicationVO.getCreateObjType() == null || "".equals(communicationVO.getCreateObjType())){
+    			logger.error("Mandetory Create Object Type is not available");
+    			throw new IllegalAccessException("Mandetory Create Object Type is not available");
+    		}
+			
+    		CreateRequest createRequest = new CreateRequest(communicationVO.getCreateObjType(), createJsonObjFromMap(communicationVO.getCreateOrUpdateObjPropMap()));
+			CreateResponse createResponse = rallyRestApi.create(createRequest);
+			
+			if(createResponse.wasSuccessful()){
+				logger.info("Successfully created data " + createResponse.getObject().get("_ref").getAsString());
+				
+				communicationVO.setUpdateObjRef(createResponse.getObject().get("_ref").getAsString());
+				
+			}else{
+				logger.error("Unable to created data. Error : " + createResponse.getErrors());
+			}
+    	} finally{
+			if(rallyRestApi != null){
+				logger.debug("Finally closing the connection.");
+				rallyRestApi.close();
+			}
+		}
+    	String response = new Gson().toJson(communicationVO);
+    	logger.debug("Sending Data: " + response);
+		return response;
+	}
+	
+	/**
+	 * Update object in Rally
+	 * @return
+	 * @throws IllegalAccessException 
+	 * @throws URISyntaxException 
+	 * @throws IOException 
+	 * @throws Exception 
+	 */
+	@ApiMethod(
+			path = "/rallyrestws/updateObj",
+			verb = ApiVerb.POST, 
+			description = "Update object in Rally",
+			consumes = {MediaType.APPLICATION_JSON},
+			produces = {MediaType.APPLICATION_JSON}
+			)
+	@POST
+    @Path("/updateObj")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public @ApiResponseObject String updateObj(@ApiBodyObject CommunicationVO communicationVO) throws URISyntaxException, IllegalAccessException, IOException {
+		JsonElement responseJSONElmnt = null;
+    	RallyRestApi rallyRestApi = null;
+    	try {
+    		logger.info("Starting Object Updation...");
+    		
+    		final String rallyUrl = PropertyReader.properties.getProperty("rally.url");
+    		logger.debug("Rally URL: " + rallyUrl);
+    		
+    		final String apiKey = PropertyReader.properties.getProperty("api.key");
+    		rallyRestApi = new RallyRestApi(new URI(rallyUrl), apiKey);
+    		
+    		if(communicationVO.getUpdateObjRef() == null || "".equals(communicationVO.getUpdateObjRef())){
+    			logger.error("Mandetory Update Object ref is not available");
+    			throw new IllegalAccessException("Mandetory Update Object ref is not available");
+    		}
+			
+    		UpdateRequest updateRequest = new UpdateRequest(communicationVO.getUpdateObjRef(), createJsonObjFromMap(communicationVO.getCreateOrUpdateObjPropMap()));
+			UpdateResponse updateResponse = rallyRestApi.update(updateRequest);
+			
+			if(updateResponse.wasSuccessful()){
+				logger.info("Successfully updated data " + updateResponse.getObject().get("_ref").getAsString());
+			}else{
+				logger.error("Unable to update data. Error : " + updateResponse.getErrors());
+			}
+    	} finally{
+			if(rallyRestApi != null){
+				logger.debug("Finally closing the connection.");
+				rallyRestApi.close();
+			}
+		}
+    	communicationVO.setResponse(responseJSONElmnt);
+    	String response = new Gson().toJson(communicationVO);
+    	logger.debug("Sending Data: " + response);
+		return response;
+	}
+
+	/**
+	 * Create the JSON Object form the Map
+	 * 
+	 * @param createObjPropMap
+	 * @return
+	 */
+	private JsonObject createJsonObjFromMap(Map<String, String> createObjPropMap) {
+		JsonObject jsonObject = new JsonObject();
+		
+		for (Map.Entry<String, String> entry : createObjPropMap.entrySet()) {
+			jsonObject.addProperty(entry.getKey(), entry.getValue());
+		}
+		return jsonObject;
+	}
+
 
 	/**
 	 * Set the properties of the QueryRequest
